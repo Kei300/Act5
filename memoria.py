@@ -1,9 +1,14 @@
 from random import *
 from turtle import *
 from freegames import path
+import string
 
 car = path('car.gif')
 tiles = list(range(8)) * 2 # Since we want a 4x4 grid, with paired tiles
+
+letters = list(string.ascii_uppercase[:8]) * 2  # Usar letras en lugar de números
+shuffle(letters)
+
 state = {'mark': None}
 hide = [True] * 16
 writer = Turtle(visible=False)
@@ -80,7 +85,7 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        goto(x + 15, y + 5)
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
 
