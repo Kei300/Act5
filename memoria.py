@@ -41,6 +41,7 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+    checkTiles()
 
 def countTaps():
     "Count the taps and draw them on the screen."
@@ -49,6 +50,18 @@ def countTaps():
     writer.goto(210, 180)
     writer.clear()
     writer.write(taps)  
+
+def checkTiles():
+    "Check that all the tiles have been show"
+    global taps
+    for count in range(len(tiles)):
+        if hide[count] == True:
+            return
+
+    print(f'You win with {taps} taps')
+    writer.goto(210, 180)
+    writer.clear()
+    writer.write(f'You win with {taps} taps')
 
 def draw():
     "Draw image and tiles."
